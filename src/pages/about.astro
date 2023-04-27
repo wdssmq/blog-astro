@@ -1,0 +1,38 @@
+---
+import BaseHead from "@/theme-simple/_blocks/BaseHead.astro";
+import SideBar from "@/theme-simple/_blocks/SideBar.astro";
+import BaseFoot from "@/theme-simple/_blocks/BaseFoot.astro";
+import { config } from "@/theme-simple/config";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+
+import BlogSingle from "@/theme-simple/_blocks/BlogSingle.astro";
+import { getEntryBySlug } from "astro:content";
+const about = await getEntryBySlug("pages", "about");
+const { Content } = await about.render();
+
+// import { frontmatter, Content } from "@content/pages/about.md";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <div id="app" class="main">
+            <SideBar
+                menus={config.menus}
+                site={config.site}
+                author={config.author}
+            />
+            <div class="main-container">
+                <div class="content-container" data-aos="fade-up">
+                    <BlogSingle {...about.data}>
+                        <Content />
+                    </BlogSingle>
+                </div>
+            </div>
+        </div>
+        <BaseFoot />
+    </body>
+</html>

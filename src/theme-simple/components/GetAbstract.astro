@@ -1,0 +1,11 @@
+---
+export interface Props {
+	content: string;
+}
+
+const { content } = Astro.props;
+---
+<!-- 截取摘要 -->
+{
+    content.replace(/<[^>]+>/g, '').substring(0, 200)
+}

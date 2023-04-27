@@ -1,0 +1,38 @@
+---
+export interface Props {
+    date: Date;
+}
+const { date } = Astro.props;
+
+import { config } from "@/theme-simple/config";
+
+const locales = config.site.locales || "en-us";
+
+type MapType = {
+    [key: string]: {
+        year: "numeric";
+        month: "short" | "2-digit";
+        day: "numeric" | "2-digit";
+        timeZone?: string; // 如果需要添加新的属性 timeZone
+    };
+};
+
+const optMap: MapType = {
+    "en-us": {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    },
+    "zh-CN": {
+        timeZone: "Asia/Shanghai",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    },
+};
+
+---
+
+<time datetime={date.toISOString()}>
+    {date.toLocaleDateString(locales, optMap[locales]).replace(/\//g, "-")}
+</time>

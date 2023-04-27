@@ -1,0 +1,47 @@
+---
+import BaseHead from "@/theme-simple/_blocks/BaseHead.astro";
+import SideBar from "@/theme-simple/_blocks/SideBar.astro";
+import BaseFoot from "@/theme-simple/_blocks/BaseFoot.astro";
+import { config } from "@/theme-simple/config";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+
+import BlogSingle from "@/theme-simple/_blocks/BlogSingle.astro";
+import { CollectionEntry, getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'blog'>;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <div id="app" class="main">
+            <SideBar
+                menus={config.menus}
+                site={config.site}
+                author={config.author}
+            />
+            <div class="main-container">
+                <div class="content-container" data-aos="fade-up">
+                    <BlogSingle {...post.data}>
+                        <h1>{post.data.title}</h1>
+                        <Content />
+                    </BlogSingle>
+                </div>
+            </div>
+        </div>
+        <BaseFoot />
+    </body>
+</html>

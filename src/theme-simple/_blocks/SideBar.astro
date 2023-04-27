@@ -1,0 +1,38 @@
+---
+export interface Props {
+    author: { name: string; avatar: string; bio: string };
+    menus: { name: string; path: string }[];
+    site: { url: string; title: string; description: string; copy: string };
+}
+const { menus, site, author } = Astro.props;
+---
+
+<div class="sidebar">
+    <div class="top-container" data-aos="fade-right">
+        <div class="top-header-container">
+            <a href={site.url} title={`${author.name} - ${author.bio}`} class="site-title-container"
+                ><img src={author.avatar} alt={author.name} class="site-logo" />
+                <h1 class="site-title">{site.title}</h1></a
+            >
+            <div class="menu-btn">
+                <div class="line"></div>
+            </div>
+        </div>
+        <div>
+            {
+                menus.map((item) => (
+                    <a href={item.path} title={item.name} class="site-nav">
+                        {item.name}
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+    <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+        <div class="social-container"></div>
+        <div class="site-description">{site.description}</div>
+        <div class="site-footer">
+            {site.copy} | <a href={`${site.url}rss.xml`} title="RSS" target="_blank" class="rss">RSS</a>
+        </div>
+    </div>
+</div>

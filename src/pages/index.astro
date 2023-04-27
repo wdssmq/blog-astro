@@ -1,0 +1,66 @@
+---
+import BaseHead from "@/theme-simple/_blocks/BaseHead.astro";
+import SideBar from "@/theme-simple/_blocks/SideBar.astro";
+import BaseFoot from "@/theme-simple/_blocks/BaseFoot.astro";
+import { config } from "@/theme-simple/config";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+
+import { getCollection } from "astro:content";
+import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
+import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
+const posts = await getCollection("blog");
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <div id="app" class="main">
+            <SideBar
+                menus={config.menus}
+                site={config.site}
+                author={config.author}
+            />
+            <div class="main-container">
+                <div class="content-container" data-aos="fade-up">
+                    {
+
+                        posts.map((post) => (
+
+                            <article class="post-item">
+                                <div class="left">
+                                    <a href={`/blog/${post.slug}/`} title={post.data.title}>
+                                        <h2 class="post-title">
+                                            {post.data.title}
+                                        </h2>
+                                    </a>
+                                    <div class="post-date">
+                                        <FormattedDate
+                                            date={post.data.pubDate}
+                                        />
+                                    </div>
+                                    <div class="post-abstract">
+                                        <GetAbstract
+                                            content={post.body}
+                                        />
+                                    </div>
+                                </div>
+                                {post.data.heroImage && (
+                                    <a class="right" href={`/blog/${post.slug}/`} title={post.data.title}>
+                                        <div
+                                            class="feature-container"
+                                            style={`background-image: url('${post.data.heroImage}');`}
+                                        />
+                                    </a>
+                                )}
+                            </article>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+        <BaseFoot />
+    </body>
+</html>
