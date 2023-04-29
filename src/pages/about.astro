@@ -16,7 +16,7 @@ const { Content } = await about.render();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+        <BaseHead title={about.data.title} subtitle={SITE_TITLE} description={about.data.description} />
     </head>
     <body>
         <div id="app" class="main">
