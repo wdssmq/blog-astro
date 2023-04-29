@@ -22,4 +22,8 @@ export const config = {
         { name: 'Archive', path: '/archive' },
         { name: 'About', path: '/about' },
     ],
+    archive: {
+        title: "Archive",
+        description: "Archive description",
+    },
 };
