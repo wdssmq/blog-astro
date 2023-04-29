@@ -19,6 +19,7 @@ export const config = {
     },
     menus: [
         { name: 'Home', path: '/' },
+        { name: 'Archive', path: '/archive' },
         { name: 'About', path: '/about' },
     ],
 };

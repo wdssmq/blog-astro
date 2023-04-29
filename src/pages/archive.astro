@@ -1,0 +1,50 @@
+---
+import BaseHead from "@/theme-simple/_blocks/BaseHead.astro";
+import SideBar from "@/theme-simple/_blocks/SideBar.astro";
+import BaseFoot from "@/theme-simple/_blocks/BaseFoot.astro";
+import { config } from "@/theme-simple/config";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+
+import { getCollection } from "astro:content";
+import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
+// import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
+const posts = await getCollection("blog");
+---
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <div id="app" class="main">
+            <SideBar
+                menus={config.menus}
+                site={config.site}
+                author={config.author}
+            />
+            <div class="main-container">
+                <div class="content-container" data-aos="fade-up">
+                    <h2 class="archives-title">Archive</h2>
+                    <div class="archives-container">
+                        {
+                            posts.map((post) => (
+                                <article class="post">
+                                    <a
+                                        href={`/blog/${post.slug}/`}
+                                        title={post.data.title}
+                                    >
+                                        <h2 class="post-title">
+                                            [<FormattedDate date={post.data.pubDate} />] {post.data.title}
+                                        </h2>
+                                    </a>
+                                </article>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <BaseFoot />
+    </body>
+</html>
