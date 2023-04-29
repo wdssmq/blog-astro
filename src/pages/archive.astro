@@ -14,7 +14,7 @@ const posts = await getCollection("blog");
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <BaseHead title={config.site.title} subtitle={SITE_TITLE} description={config.site.description} />
+        <BaseHead title={config.archive.title} subtitle={SITE_TITLE} description={config.archive.description} />
     </head>
     <body>
         <div id="app" class="main">
@@ -25,7 +25,7 @@ const posts = await getCollection("blog");
             />
             <div class="main-container">
                 <div class="content-container" data-aos="fade-up">
-                    <h2 class="archives-title">{config.site.title}</h2>
+                    <h2 class="archives-title">{config.archive.title}</h2>
                     <div class="archives-container">
                         {
                             posts.map((post) => (
