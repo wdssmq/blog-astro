@@ -15,7 +15,7 @@ const posts = await getCollection("blog");
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <BaseHead title={config.archive.title} subtitle={SITE_TITLE} description={config.archive.description} />
+        <BaseHead title={config.archive.title} subtitle={SITE_TITLE} description={config.archive.description} image={config.site.image}/>
     </head>
     <body>
         <div id="app" class="main">

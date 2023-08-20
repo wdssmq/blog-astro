@@ -24,7 +24,7 @@ const { Content } = await post.render();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <BaseHead title={post.data.title} subtitle={SITE_TITLE} description={post.data.description} />
+        <BaseHead title={post.data.title} subtitle={SITE_TITLE} description={post.data.description} image={post.data.heroImage || config.site.image} />
     </head>
     <body>
         <div id="app" class="main">

@@ -7,7 +7,7 @@ export interface Props {
     title: string;
     subtitle: string;
     description: string;
-    image?: string;
+    image: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -16,7 +16,7 @@ const {
     title,
     subtitle,
     description,
-    image = "/placeholder-social.jpg",
+    image,
 } = Astro.props;
 
 const titleText = subtitle ? `${title} - ${subtitle}` : title;
