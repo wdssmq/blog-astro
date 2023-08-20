@@ -1,5 +1,6 @@
 # build output
 dist/
+
 # generated types
 .astro/
 
@@ -21,4 +22,5 @@ pnpm-debug.log*
 .DS_Store
 
 # other
+.history
 *-note/
