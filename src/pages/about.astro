@@ -6,11 +6,11 @@ import { config } from "@/theme-simple/config";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
 import BlogSingle from "@/theme-simple/_blocks/BlogSingle.astro";
+
+// import { frontmatter, Content } from "@content/pages/about.md";
 import { getEntryBySlug } from "astro:content";
 const about = await getEntryBySlug("pages", "about");
 const { Content } = await about.render();
-
-// import { frontmatter, Content } from "@content/pages/about.md";
 ---
 
 <!DOCTYPE html>

@@ -5,9 +5,10 @@ import BaseFoot from "@/theme-simple/_blocks/BaseFoot.astro";
 import { config } from "@/theme-simple/config";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
-import { getCollection } from "astro:content";
 import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
+
+import { getCollection } from "astro:content";
 const posts = await getCollection("blog");
 ---
 
