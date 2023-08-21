@@ -26,7 +26,7 @@ npm run build
 4、各种说明：
 
 1. 这东西虽然可以当博客，但并没有一般博客意义上的「主题」规范，姑且仍然尝试将文件放到了 `src/theme-simple` 目录下，`src/pages` 则因为 Astro 的限制，只能放外边；
-2. `src/theme-simple/config.ts`用于主题的配置选项；「是不是也放外边或者直接用 `consts.ts` 比较好」
+2. `src/theme-simple/config.ts` 用于主题的配置选项；「是不是也放外边或者直接用 `consts.ts` 比较好」
 3. `astro.config.mjs` 有个 `site` 字段用于设置域名；
 4. 文章内容路径为 `src/content`，可以符号链接或快捷方式到其他地方方便管理；
 5. 内置了一个「关于」页面，路径 `src/content/pages/about.md`，**应该是不能删除，其他文件名也并不会被解析为新页面**；
@@ -41,7 +41,8 @@ npm run build
    - `src/theme-simple` 内除了 `config.ts` 以外的所有文件；「果然该调整下配置路径」
    - `src/pages` 内的所有文件；
    - `package.json`；
-4. 重新安装依赖然后调试运行；
+4. 额外对比 `src/theme-simple/config.ts` 或 `public` 内容；
+5. 重新安装依赖然后调试运行；
 
 推荐：[tip. 额外的使用或更新说明 · Issue #4 · wdssmq/blog-astro](https://github.com/wdssmq/blog-astro/issues/4 "tip. 额外的使用或更新说明 · Issue #4 · wdssmq/blog-astro")；「提供了 Beyond Compare 的排除规则」
 
