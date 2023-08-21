@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import "@/theme-simple/assets/styles/main.less";
+import { config } from "@/theme-simple/config";
 
 export interface Props {
     title: string;
@@ -20,12 +21,31 @@ const {
 } = Astro.props;
 
 const titleText = subtitle ? `${title} - ${subtitle}` : title;
+
+// 根据 config.site.favicon 后缀判断 favicon 类型
+const favInfo = {
+    ext: config.site.favicon.split(".").pop(),
+    url: config.site.favicon,
+    type: "image/x-icon",
+};
+switch (favInfo.ext) {
+    case "svg":
+        favInfo.type = "image/svg+xml";
+        break;
+    case "png":
+        favInfo.type = "image/png";
+        break;
+    default:
+    case "ico":
+        favInfo.type = "image/x-icon";
+        break;
+}
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type={favInfo.type} href={favInfo.url} />
 <meta name="generator" content={Astro.generator} />
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
