@@ -1,11 +1,36 @@
 ---
 export interface Props {
-	content: string;
+  content: string;
 }
+import { marked } from "marked";
 
 const { content } = Astro.props;
----
-<!-- 截取摘要 -->
-{
-    content.replace(/<[^>]+>/g, '').substring(0, 200)
+
+// 合并多个两个空行为一个空行
+const raw_content = content.trim().replace(/\n\s*[\n\s]+/g, "\n\n");
+// const html_content = marked(raw_content);
+
+// 判断 raw_content 是否有摘要分隔符
+const has_separator = raw_content.includes("<!-- more -->");
+
+let raw_intro = "";
+if (has_separator) {
+  raw_intro = raw_content.split("<!-- more -->")[0];
+} else {
+  // 按空行分割后，取至多四段
+  raw_intro = raw_content.split(/\n\n/).slice(0, 4).join("\n\n<!-- br -->\n\n");
 }
+
+let html_intro = marked(raw_intro);
+// 清除 html 标签，但保留注释
+html_intro = html_intro.replace(/<(?!\!)[^>]+>/g, "");
+
+// 替换注释为换行
+// html_intro = html_intro.replace(/<!-- br -->/g, "<br />");
+
+// 截取
+html_intro = html_intro.replace(/<!-- br -->/g, "").slice(0, 109) + "...";
+---
+
+<!-- html 作为源码输出 -->
+<Fragment set:html={html_intro} />
