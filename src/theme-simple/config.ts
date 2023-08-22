@@ -27,4 +27,9 @@ export const config = {
         title: "Archive",
         description: "Archive description",
     },
+    func: {
+        sortPosts: (a: any, b: any) => {
+            return a.data.pubDate < b.data.pubDate ? 1 : -1;
+        }
+    }
 };
