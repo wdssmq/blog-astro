@@ -27,6 +27,10 @@ export const config = {
         title: "Archive",
         description: "Archive description",
     },
+    opt: {
+        postsSize: 37,
+        rssSize: 37,
+    },
     func: {
         sortPosts: (a: any, b: any) => {
             return a.data.pubDate < b.data.pubDate ? 1 : -1;

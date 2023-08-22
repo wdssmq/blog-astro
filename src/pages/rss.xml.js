@@ -4,7 +4,7 @@ import { config } from "@/theme-simple/config";
 import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
 export async function get(context) {
-    const posts = (await getCollection("blog")).sort(config.func.sortPosts);
+    const posts = (await getCollection("blog")).sort(config.func.sortPosts).slice(0, config.opt.rssSize);
     return rss({
         title: SITE_TITLE,
         description: SITE_DESCRIPTION,

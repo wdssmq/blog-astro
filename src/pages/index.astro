@@ -9,7 +9,7 @@ import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
 
 import { getCollection } from "astro:content";
-const posts = (await getCollection("blog")).sort(config.func.sortPosts);
+const posts = (await getCollection("blog")).sort(config.func.sortPosts).slice(0, 10);
 ---
 
 <!DOCTYPE html>
