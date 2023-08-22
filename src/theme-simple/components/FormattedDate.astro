@@ -13,6 +13,8 @@ type MapType = {
         year: "numeric";
         month: "short" | "2-digit";
         day: "numeric" | "2-digit";
+        hour?: "numeric" | "2-digit";
+        minute?: "numeric" | "2-digit";
         timeZone?: string; // 如果需要添加新的属性 timeZone
     };
 };
@@ -22,11 +24,15 @@ const optMap: MapType = {
         year: "numeric",
         month: "short",
         day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
     },
     "zh-CN": {
         timeZone: "Asia/Shanghai",
         year: "numeric",
         month: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
         day: "2-digit",
     },
 };
