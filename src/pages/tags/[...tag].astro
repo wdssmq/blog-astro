@@ -10,17 +10,19 @@ import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 
 import { CollectionEntry, getCollection } from 'astro:content';
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
+	const posts = (await getCollection("blog")).sort(config.func.sortPosts);
     const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
 	return tags.map((tag) =>({
         params: { tag },
-        props: posts.filter((post) => post.data.tags.includes(tag))
+        props: {
+            posts: posts.filter((post) => post.data.tags.includes(tag))
+        }
     }));
 }
 
 // type Props = CollectionEntry<'blog'>[];
 type Params = { tag: string };
-const posts = Object.values(Astro.props);
+const { posts } = Astro.props;
 const { tag } = Astro.params as Params;
 ---
 
