@@ -120,7 +120,7 @@ a {
 .pagination-container {
   display: flex;
   justify-content: space-between;
-  .prev, .next {
+  .prev, .next, .link {
     display: inline-block;
     padding: 8px 16px;
     background: #fff;
@@ -132,6 +132,23 @@ a {
       border: 1px solid @oc-gray-3;
     }
   }
+}
+
+.pagination-container.page-bar {
+    justify-content: center;
+    .link {
+        margin: 0 3px;
+    }
+    .current {
+        font-weight: lighter;
+        color: #7c8280;
+    }
+    .prev {
+        margin-right: 3px;
+    }
+    .next {
+        margin-left: 3px;
+    }
 }
 
 .post-detail {
@@ -321,7 +338,7 @@ a {
     padding-bottom: 16px;
     display: list-item;
     list-style-type: square;
-    margin-left: 1em;    
+    margin-left: 1em;
     .post-title {
       font-size: 18px;
       transition: all 0.3s;

@@ -1,0 +1,36 @@
+---
+const {
+    prev,
+    next,
+    total: totalPage,
+    current: curPage,
+    tpl,
+    isBar
+} = Astro.props;
+
+const maxPageNum = Math.min(totalPage, curPage + 5);
+const minPageNum = Math.max(1, maxPageNum - 5);
+
+const arrPages = [];
+for (let pageNum = minPageNum; pageNum < maxPageNum; pageNum++) {
+    const page = {
+        num: pageNum,
+        link: tpl.replace('%num%', pageNum),
+        isCur: pageNum === curPage
+    }
+    arrPages.push(page);
+}
+---
+<div class={"pagination-container" + (isBar ? " page-bar" : "")}>
+    {
+        prev.num > 0 && <a href={prev.link} class="prev" title="上一页" > 上一页 </a>
+    }
+    {
+        isBar && arrPages.map((page) => (
+            <a href={page.link} class={"link" + (page.isCur ? " current" : "")} title={page.num}>{page.num}</a>
+        ))
+    }
+    {
+        next.num > 0 && <a href={next.link} class="next" title="下一页" > 下一页 </a>
+    }
+</div>

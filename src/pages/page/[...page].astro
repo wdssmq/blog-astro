@@ -9,10 +9,34 @@ import PageBar from "@/theme-simple/_blocks/PageBar.astro";
 import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
 
-import { getCollection } from "astro:content";
-const allPost = (await getCollection("blog")).sort(config.func.sortPosts);
-const posts = allPost.slice(0, config.opt.postsSize);
-const pagination = config.func.getPagination(allPost.length, config.opt.postsSize);
+import { CollectionEntry, getCollection } from 'astro:content';
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+    // 基于 config.opt.postsSize 来分页
+    const totalPosts = posts.length;
+    const maxPages = Math.ceil(totalPosts / config.opt.postsSize);
+    type Paths = {
+        params: { page: string },
+        props: CollectionEntry<'blog'>[]
+    };
+    const paths = [] as Paths[];
+    for (let i = 1; i <= maxPages; i++) {
+        paths.push({
+            params: {
+                page: i.toString(),
+             },
+            props: {
+                posts: posts.slice((i - 1) * config.opt.postsSize, i * config.opt.postsSize),
+                curPage: i,
+                totalPosts
+            }
+        });
+    }
+    return paths;
+}
+
+const { posts, curPage, totalPosts } = Astro.props;
+const pagination = config.func.getPagination(totalPosts, config.opt.postsSize, curPage);
 ---
 
 <!DOCTYPE html>
@@ -63,7 +87,7 @@ const pagination = config.func.getPagination(allPost.length, config.opt.postsSiz
                     // <<文章列表
                     }
                     {
-                        config.opt.postsSize < allPost.length &&
+                        config.opt.postsSize < totalPosts  &&
                         <PageBar {...pagination} isBar={true} />
                     }
                 </div>
