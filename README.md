@@ -26,8 +26,8 @@ npm run build
 4、各种说明：
 
 1. 这东西虽然可以当博客，但并没有一般博客意义上的「主题」规范，姑且仍然尝试将文件放到了 `src/theme-simple` 目录下，`src/pages` 则因为 Astro 的限制，只能放外边；
-2. `src/theme-simple/config.ts` 用于主题的配置选项；「是不是也放外边或者直接用 `consts.ts` 比较好」
-3. `astro.config.mjs` 有个 `site` 字段用于设置域名；
+2. `src/theme-simple/config.ts` 用于预置和合并配置，自定义则在 `src/consts.ts` 中；
+3. `astro.config.mjs` 有个 `site` 字段用于设置域名；「好像和 `config.site.url` 也是重复的」
 4. 文章内容路径为 `src/content`，可以符号链接或快捷方式到其他地方方便管理；
 5. 内置了一个「关于」页面，路径 `src/content/pages/about.md`，**应该是不能删除，其他文件名也并不会被解析为新页面**；
 6. 「文章」存放于`src/content/blog`路径内，可自行清空后新建；
@@ -37,11 +37,11 @@ npm run build
 1. 克隆或下载 [wdssmq/blog-astro](https://github.com/wdssmq/blog-astro "wdssmq/blog-astro: 一个基于 Astro 的静态博客；") 仓库；
 2. 使用 Beyond Compare 或其他工具比较差异；
 3. 按如下说明覆盖文件：
-   - `src/content/config.ts`；「需要同时调整已有文章或页面的字段」
-   - `src/theme-simple` 内除了 `config.ts` 以外的所有文件；「果然该调整下配置路径」
+   - `src/content/config.ts`；「2023-08-26：此文件内配置将从 `src/theme-simple/config.ts` 引入」
+   - `src/theme-simple` 内所有文件；「2023-08-26：原有的自定义配置复制到新版 `src/consts.ts` 内」
    - `src/pages` 内的所有文件；
    - `package.json`；
-4. 额外对比 `src/theme-simple/config.ts` 或 `public` 内容；
+4. 额外对比 `src/consts.ts` 或 `public` 内容；
 5. 重新安装依赖然后调试运行；
 
 推荐：[tip. 额外的使用或更新说明 · Issue #4 · wdssmq/blog-astro](https://github.com/wdssmq/blog-astro/issues/4 "tip. 额外的使用或更新说明 · Issue #4 · wdssmq/blog-astro")；「提供了 Beyond Compare 的排除规则」
