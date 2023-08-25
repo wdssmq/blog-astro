@@ -3,7 +3,6 @@ import BaseHead from "@/theme-simple/_blocks/BaseHead.astro";
 import SideBar from "@/theme-simple/_blocks/SideBar.astro";
 import BaseFoot from "@/theme-simple/_blocks/BaseFoot.astro";
 import { config } from "@/theme-simple/config";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
 import BlogSingle from "@/theme-simple/_blocks/BlogSingle.astro";
 
@@ -24,7 +23,7 @@ const { Content } = await post.render();
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <BaseHead title={post.data.title} subtitle={SITE_TITLE} description={post.data.description} image={post.data.heroImage || config.site.image} />
+        <BaseHead title={post.data.title} subtitle={config.site.title} description={post.data.description} image={post.data.heroImage || config.site.image} />
     </head>
     <body>
         <div id="app" class="main">

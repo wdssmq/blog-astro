@@ -3,7 +3,6 @@ import BaseHead from "@/theme-simple/_blocks/BaseHead.astro";
 import SideBar from "@/theme-simple/_blocks/SideBar.astro";
 import BaseFoot from "@/theme-simple/_blocks/BaseFoot.astro";
 import { config } from "@/theme-simple/config";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
 
 import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 // import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
@@ -15,7 +14,7 @@ const posts = (await getCollection("blog")).sort(config.func.sortPosts);
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <BaseHead title={config.archive.title} subtitle={SITE_TITLE} description={config.archive.description} image={config.site.image}/>
+        <BaseHead title={config.archive.title} subtitle={config.site.title} description={config.archive.description} image={config.site.image}/>
     </head>
     <body>
         <div id="app" class="main">

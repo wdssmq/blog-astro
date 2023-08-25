@@ -1,16 +1,14 @@
-import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
+import type { RequiredConfig, keyOfConfig } from "@/theme-simple/config.d"
+import { usrConfig } from "@/consts";
 
-const today = new Date();
-const copy = `© ${today.getFullYear()} YOUR NAME HERE.`;
-
-export const config = {
+const defConfig: RequiredConfig = {
     site: {
         url: "/",
-        title: SITE_TITLE,
-        description: SITE_DESCRIPTION,
+        title: 'My website.',
+        description: 'Welcome to my website!',
         favicon: "/favicon.svg",
         image: "/placeholder-social.jpg", // default image for meta tag.
-        copy: copy,
+        copy: '©{curFullYear} YOUR NAME HERE.', // default copy for footer.
         locales: "zh-CN", // 'en-us'
     },
     author: {
@@ -30,8 +28,14 @@ export const config = {
     opt: {
         postsSize: 13,
         rssSize: 37,
+        curFullYear: "", // will be set in func.paresTags
     },
     func: {
+        paresTags: (_config: RequiredConfig) => {
+            const curFullYear = new Date().getFullYear().toString();
+            _config.opt.curFullYear = curFullYear;
+            _config.site.copy = _config.site.copy.replace("{curFullYear}", curFullYear);
+        },
         sortPosts: (a: any, b: any) => {
             return a.data.pubDate < b.data.pubDate ? 1 : -1;
         },
@@ -58,6 +62,22 @@ export const config = {
         }
     }
 };
+
+// 以 defConfig 为基础，使用 usrConfig 中的设置进行覆盖或合并；
+const config: RequiredConfig = defConfig;
+for (const key in usrConfig) {
+    if (Object.prototype.hasOwnProperty.call(usrConfig, key)) {
+        const element = usrConfig[key as keyOfConfig];
+        if (Array.isArray(element)) {
+            config[key as keyOfConfig] = element as any;
+        } else if (typeof element === "object") {
+            config[key as keyOfConfig] = { ...config[key as keyOfConfig], ...element } as any;
+        }
+    }
+}
+config.func.paresTags(config);
+
+export { config };
 
 import { defineCollection, z } from 'astro:content';
 export const blogSchema = {
