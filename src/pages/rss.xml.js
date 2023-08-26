@@ -2,6 +2,9 @@ import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import { config } from "@/theme-simple/config";
 
+import { marked } from "marked";
+import sanitizeHtml from 'sanitize-html';
+
 export async function get(context) {
     const posts = (await getCollection("blog")).sort(config.func.sortPosts).slice(0, config.opt.rssSize);
     return rss({
@@ -10,6 +13,7 @@ export async function get(context) {
         site: context.site,
         items: posts.map((post) => ({
             ...post.data,
+            content: sanitizeHtml(marked(post.body)),
             link: `/blog/${post.slug}/`,
         })),
     });
