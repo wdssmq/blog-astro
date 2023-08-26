@@ -14,7 +14,7 @@ const minPageNum = Math.max(1, maxPageNum - 5);
 const arrPages = [];
 for (let pageNum = minPageNum; pageNum < maxPageNum; pageNum++) {
     const page = {
-        num: pageNum,
+        num: pageNum.toString(),
         link: tpl.replace('%num%', pageNum),
         isCur: pageNum === curPage
     }

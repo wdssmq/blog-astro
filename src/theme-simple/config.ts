@@ -95,6 +95,6 @@ export const blogSchema = {
             .optional()
             .transform((str) => (str ? new Date(str) : undefined)),
         heroImage: z.string().optional(),
-        tags: z.array(z.string().or(z.number())),
+        tags: z.array(z.string().or(z.number()).transform((val) => val.toString())),
     }),
 }

@@ -9,6 +9,11 @@ import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
 
 import { CollectionEntry, getCollection } from 'astro:content';
+type AstroProps = {
+    posts: CollectionEntry<'blog'>[],
+    curPage: number,
+    totalPosts: number
+};
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
     // 基于 config.opt.postsSize 来分页
@@ -16,14 +21,14 @@ export async function getStaticPaths() {
     const maxPages = Math.ceil(totalPosts / config.opt.postsSize);
     type Paths = {
         params: { page: string },
-        props: CollectionEntry<'blog'>[]
+        props: AstroProps
     };
     const paths = [] as Paths[];
     for (let i = 1; i <= maxPages; i++) {
         paths.push({
             params: {
                 page: i.toString(),
-             },
+            },
             props: {
                 posts: posts.slice((i - 1) * config.opt.postsSize, i * config.opt.postsSize),
                 curPage: i,
@@ -34,7 +39,7 @@ export async function getStaticPaths() {
     return paths;
 }
 
-const { posts, curPage, totalPosts } = Astro.props;
+const { posts, curPage, totalPosts } = Astro.props as AstroProps;
 const pagination = config.func.getPagination(totalPosts, config.opt.postsSize, curPage);
 ---
 
