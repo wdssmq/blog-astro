@@ -41,7 +41,7 @@ npm run build
    - `src/theme-simple` 内所有文件；「2023-08-26：原有的自定义配置复制到新版 `src/consts.ts` 内」
    - `src/pages` 内的所有文件；
    - `package.json`；
-4. 额外对比 `src/consts.ts` 或 `public` 内容；
+4. 额外对比 `public` `astro.config.mjs` `src/consts.ts` 内容；
 5. 重新安装依赖然后调试运行；
 
 推荐：[tip. 额外的使用或更新说明 · Issue #4 · wdssmq/blog-astro](https://github.com/wdssmq/blog-astro/issues/4 "tip. 额外的使用或更新说明 · Issue #4 · wdssmq/blog-astro")；「提供了 Beyond Compare 的排除规则」
