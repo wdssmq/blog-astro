@@ -8,45 +8,20 @@ import PageBar from "@/theme-simple/_blocks/PageBar.astro";
 import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
 
+import type { GetStaticPathsOptions, Page } from "astro"
 import { CollectionEntry, getCollection } from "astro:content";
-type AstroProps = {
-    posts: CollectionEntry<"blog">[];
-    curPage: number;
-    totalPosts: number;
-};
-export async function getStaticPaths() {
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
     const posts = (await getCollection("blog")).sort(config.func.sortPosts);
     // 基于 config.opt.postsSize 来分页
-    const totalPosts = posts.length;
-    const maxPages = Math.ceil(totalPosts / config.opt.postsSize);
-    type Paths = {
-        params: { page: string };
-        props: AstroProps;
-    };
-    const paths = [] as Paths[];
-    for (let i = 1; i <= maxPages; i++) {
-        paths.push({
-            params: {
-                page: i.toString(),
-            },
-            props: {
-                posts: posts.slice(
-                    (i - 1) * config.opt.postsSize,
-                    i * config.opt.postsSize
-                ),
-                curPage: i,
-                totalPosts,
-            },
-        });
-    }
-    return paths;
+    return paginate(posts, { pageSize: config.opt.postsSize });
 }
 
-const { posts, curPage, totalPosts } = Astro.props as AstroProps;
+const { data: posts, currentPage, total } = Astro.props.page as Page<CollectionEntry<"blog">>;
 const pagination = config.func.getPagination(
-    totalPosts,
+    total,
     config.opt.postsSize,
-    curPage
+    currentPage
 );
 ---
 
@@ -107,11 +82,7 @@ const pagination = config.func.getPagination(
                         ))
                         // <<文章列表
                     }
-                    {
-                        config.opt.postsSize < totalPosts && (
-                            <PageBar {...pagination} isBar={true} />
-                        )
-                    }
+                    <PageBar {...pagination} isBar={true} />
                 </div>
             </div>
         </div>
