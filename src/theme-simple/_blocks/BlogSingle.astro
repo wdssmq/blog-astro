@@ -2,7 +2,8 @@
 import type { CollectionEntry } from "astro:content";
 type Props = CollectionEntry<"blog">["data"];
 
-const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
+// const { title, description, pubDate, updatedDate, heroImage, tags } = Astro.props;
+const { title, pubDate, heroImage, tags } = Astro.props;
 
 import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 ---
