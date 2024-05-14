@@ -38,8 +38,6 @@ export interface Func {
     getPagination: (count: number, size: number, current?: number, tpl?: string) => any
 }
 
-type keyOfConfig = "site" | "author" | "menus" | "archive" | "opt" | "func";
-
 export interface RequiredConfig {
     site: Site;
     author: Author;
@@ -58,3 +56,4 @@ export interface UserConfig {
     func?: Partial<Func>;
 }
 
+type ConfigKey = keyof RequiredConfig;

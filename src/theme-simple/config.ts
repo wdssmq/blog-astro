@@ -1,4 +1,4 @@
-import type { RequiredConfig, keyOfConfig } from "@/theme-simple/config.d";
+import type { RequiredConfig, ConfigKey } from "@/theme-simple/config.d";
 import { usrConfig } from "@/consts";
 
 const defConfig: RequiredConfig = {
@@ -67,11 +67,12 @@ const defConfig: RequiredConfig = {
 const config: RequiredConfig = defConfig;
 for (const key in usrConfig) {
     if (Object.prototype.hasOwnProperty.call(usrConfig, key)) {
-        const element = usrConfig[key as keyOfConfig];
-        if (Array.isArray(element)) {
-            config[key as keyOfConfig] = element as any;
-        } else if (typeof element === "object") {
-            config[key as keyOfConfig] = { ...config[key as keyOfConfig], ...element } as any;
+        const curKey = key as ConfigKey;
+        const curEle = usrConfig[curKey];
+        if (Array.isArray(curEle)) {
+            config[curKey] = curEle as any;
+        } else if (typeof curEle === "object") {
+            config[curKey] = { ...config[curKey], ...curEle as any };
         }
     }
 }
