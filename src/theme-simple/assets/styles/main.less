@@ -86,10 +86,10 @@ a {
 .content-container {
     margin: 0 auto;
     padding: 48px 32px;
+    max-width: @desktop-breakpoint;
 
     .fullhd({
-        max-width: @widescreen-breakpoint;
-        // max-width: @fullhd-breakpoint;
+        max-width: @widescreen-breakpoint + 64px;
     });
 }
 
@@ -187,6 +187,7 @@ a {
 
 .post-detail {
     margin: 0 auto;
+    max-width: @tablet-breakpoint;
 
     .feature-container {
         padding-top: 56.25%;
@@ -341,6 +342,12 @@ a {
             margin-bottom: 24px;
         }
     }
+}
+
+.post-detail {
+    .fullhd({
+        max-width: 100%
+    });
 }
 
 .tag {
