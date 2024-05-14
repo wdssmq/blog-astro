@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint:src": "eslint 'src/**/*.{ts,astro}' --fix",
+    "lint:config": "eslint '*.config.mjs' --fix"
   },
   "dependencies": {
     "@astrojs/check": "^0.6.0",
@@ -22,5 +24,13 @@
     "sanitize-html": "^2.11.0",
     "sharp": "^0.33.3",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "@typescript-eslint/parser": "^7.9.0",
+    "eslint": "^9.2.0",
+    "eslint-plugin-astro": "^1.2.0",
+    "globals": "^15.2.0",
+    "typescript-eslint": "^7.9.0"
   }
 }
