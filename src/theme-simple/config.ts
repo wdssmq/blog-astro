@@ -20,10 +20,15 @@ const defConfig: RequiredConfig = {
         { name: "Home", path: "/" },
         { name: "Archive", path: "/archive" },
         { name: "About", path: "/about" },
+        { name: "Search", path: "/search" },
     ],
     archive: {
         title: "Archive",
         description: "Archive description",
+    },
+    search: {
+        title: "Search",
+        description: "Search description",
     },
     opt: {
         postsSize: 13,

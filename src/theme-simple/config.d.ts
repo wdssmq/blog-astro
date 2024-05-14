@@ -26,6 +26,11 @@ export interface Archive {
     description: string
 }
 
+export interface Search {
+    title: string
+    description: string
+}
+
 export interface Opt {
     postsSize: number
     rssSize: number
@@ -58,6 +63,7 @@ export interface RequiredConfig {
     author: Author;
     menus: MenuItem[];
     archive: Archive;
+    search: Search;
     opt: Opt;
     func: Func;
 }
@@ -67,6 +73,7 @@ export interface UserConfig {
     author?: Partial<Author>;
     menus?: MenuItem[];
     archive?: Partial<Archive>;
+    search?: Partial<Search>;
     opt?: Partial<Opt>;
     func?: Partial<Func>;
 }
