@@ -15,10 +15,10 @@ const has_separator = raw_content.includes("<!-- more -->");
 
 let raw_intro = "";
 if (has_separator) {
-  raw_intro = raw_content.split("<!-- more -->")[0];
+    raw_intro = raw_content.split("<!-- more -->")[0];
 } else {
-  // 按空行分割后，取至多四段
-  raw_intro = raw_content.split(/\n\n/).slice(0, 4).join("\n\n<!-- br -->\n\n");
+    // 按空行分割后，取至多四段
+    raw_intro = raw_content.split(/\n\n/).slice(0, 4).join("\n\n<!-- br -->\n\n");
 }
 
 let html_intro = marked(raw_intro);

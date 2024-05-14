@@ -6,16 +6,16 @@ import { config } from "@/theme-simple/config";
 
 import BlogSingle from "@/theme-simple/_blocks/BlogSingle.astro";
 
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from "astro:content";
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+    const posts = await getCollection("blog");
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: post,
+    }));
 }
 
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 const post = Astro.props;
 const { Content } = await post.render();
 ---

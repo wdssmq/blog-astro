@@ -5,7 +5,7 @@ const {
     total: totalPage,
     current: curPage,
     tpl,
-    isBar
+    isBar,
 } = Astro.props;
 
 const maxPageNum = Math.min(totalPage, curPage + 5);
@@ -15,9 +15,9 @@ const arrPages = [];
 for (let pageNum = minPageNum; pageNum < maxPageNum; pageNum++) {
     const page = {
         num: pageNum.toString(),
-        link: tpl.replace('%num%', pageNum),
-        isCur: pageNum === curPage
-    }
+        link: tpl.replace("%num%", pageNum),
+        isCur: pageNum === curPage,
+    };
     arrPages.push(page);
 }
 ---

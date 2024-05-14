@@ -1,4 +1,4 @@
-import { CollectionEntry } from 'astro:content';
+import { CollectionEntry } from "astro:content";
 
 export interface Site {
     url: string

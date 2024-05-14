@@ -1,14 +1,14 @@
-import type { RequiredConfig, keyOfConfig } from "@/theme-simple/config.d"
+import type { RequiredConfig, keyOfConfig } from "@/theme-simple/config.d";
 import { usrConfig } from "@/consts";
 
 const defConfig: RequiredConfig = {
     site: {
         url: "/",
-        title: 'My website.',
-        description: 'Welcome to my website!',
+        title: "My website.",
+        description: "Welcome to my website!",
         favicon: "/favicon.svg",
         image: "/placeholder-social.jpg", // default image for meta tag.
-        copy: '©{curFullYear} YOUR NAME HERE.', // default copy for footer.
+        copy: "©{curFullYear} YOUR NAME HERE.", // default copy for footer.
         locales: "zh-CN", // 'en-us'
     },
     author: {
@@ -17,9 +17,9 @@ const defConfig: RequiredConfig = {
         bio: "Your bio",
     },
     menus: [
-        { name: 'Home', path: '/' },
-        { name: 'Archive', path: '/archive' },
-        { name: 'About', path: '/about' },
+        { name: "Home", path: "/" },
+        { name: "Archive", path: "/archive" },
+        { name: "About", path: "/about" },
     ],
     archive: {
         title: "Archive",
@@ -59,8 +59,8 @@ const defConfig: RequiredConfig = {
                     link: nextNum > 0 ? _link(nextNum) : "",
                 },
             };
-        }
-    }
+        },
+    },
 };
 
 // 以 defConfig 为基础，使用 usrConfig 中的设置进行覆盖或合并；
@@ -79,7 +79,7 @@ config.func.paresTags(config);
 
 export { config };
 
-import { z } from 'astro:content';
+import { z } from "astro:content";
 export const blogSchema = {
     // Type-check frontmatter using a schema
     schema: z.object({
@@ -97,4 +97,4 @@ export const blogSchema = {
         heroImage: z.string().optional(),
         tags: z.array(z.string().or(z.number()).transform((val) => val.toString())),
     }),
-}
+};

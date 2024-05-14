@@ -11,7 +11,7 @@ const { menus, site, author } = Astro.props;
     <div class="top-container" data-aos="fade-right">
         <div class="top-header-container">
             <a href={site.url} title={`${author.name} - ${author.bio}`} class="site-title-container"
-                ><img src={author.avatar} alt={author.name} class="site-logo" />
+            ><img src={author.avatar} alt={author.name} class="site-logo" />
                 <h1 class="site-title">{site.title}</h1></a
             >
             <div class="menu-btn">
@@ -38,10 +38,10 @@ const { menus, site, author } = Astro.props;
 </div>
 
 <script>
-    const $menuBtn = document.querySelector('.menu-btn');
-    const $sidebar = document.querySelector('.sidebar');
-    // 点击菜单按钮
-    $menuBtn?.addEventListener('click', () => {
-        $sidebar?.classList.toggle('full-height');
-    });
+const $menuBtn = document.querySelector(".menu-btn");
+const $sidebar = document.querySelector(".sidebar");
+// 点击菜单按钮
+$menuBtn?.addEventListener("click", () => {
+    $sidebar?.classList.toggle("full-height");
+});
 </script>

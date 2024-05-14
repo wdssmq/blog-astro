@@ -7,19 +7,19 @@ import { config } from "@/theme-simple/config";
 import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 // import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
 
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from "astro:content";
 export async function getStaticPaths() {
-	const posts = (await getCollection("blog")).sort(config.func.sortPosts);
+    const posts = (await getCollection("blog")).sort(config.func.sortPosts);
     const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
-	return tags.map((tag) =>({
+    return tags.map((tag) =>({
         params: { tag },
         props: {
-            posts: posts.filter((post) => post.data.tags.includes(tag))
-        }
+            posts: posts.filter((post) => post.data.tags.includes(tag)),
+        },
     }));
 }
 
-type Props = { posts: CollectionEntry<'blog'>[] };
+type Props = { posts: CollectionEntry<"blog">[] };
 type Params = { tag: string };
 const { posts } = Astro.props as Props;
 const { tag } = Astro.params as Params;
