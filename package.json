@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.6.0",
     "@astrojs/mdx": "^3.0.0",
     "@astrojs/rss": "^4.0.5",
     "@astrojs/sitemap": "^3.1.4",
@@ -18,6 +19,7 @@
     "astro": "^4.8.3",
     "less": "^4.2.0",
     "marked": "^7.0.4",
-    "sanitize-html": "^2.11.0"
+    "sanitize-html": "^2.11.0",
+    "typescript": "^5.4.5"
   }
 }
