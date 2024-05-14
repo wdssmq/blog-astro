@@ -1,0 +1,30 @@
+// 定义变量
+@tablet-breakpoint: 769px;
+@desktop-breakpoint: 1024px;
+@widescreen-breakpoint: 1216px;
+@fullhd-breakpoint: 1408px;
+
+// 媒体查询混合
+.tablet(@styles) {
+    @media (min-width: @tablet-breakpoint) {
+        @styles();
+    }
+}
+
+.desktop(@styles) {
+    @media (min-width: @desktop-breakpoint) {
+        @styles();
+    }
+}
+
+.widescreen(@styles) {
+    @media (min-width: @widescreen-breakpoint) {
+        @styles();
+    }
+}
+
+.fullhd(@styles) {
+    @media (min-width: @fullhd-breakpoint) {
+        @styles();
+    }
+}
