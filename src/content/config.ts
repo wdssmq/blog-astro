@@ -1,4 +1,4 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { blogSchema } from '@/theme-simple/config';
 
 const blog = defineCollection(blogSchema);

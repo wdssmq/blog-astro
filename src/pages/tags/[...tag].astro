@@ -7,7 +7,7 @@ import { config } from "@/theme-simple/config";
 import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 // import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
 
-import { CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 export async function getStaticPaths() {
 	const posts = (await getCollection("blog")).sort(config.func.sortPosts);
     const tags = [...new Set(posts.map((post) => post.data.tags).flat())];

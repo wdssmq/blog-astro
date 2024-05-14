@@ -9,7 +9,7 @@ import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
 import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
 
 import type { GetStaticPathsOptions, Page } from "astro"
-import { CollectionEntry, getCollection } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
     const posts = (await getCollection("blog")).sort(config.func.sortPosts);

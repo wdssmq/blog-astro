@@ -79,7 +79,7 @@ config.func.paresTags(config);
 
 export { config };
 
-import { defineCollection, z } from 'astro:content';
+import { z } from 'astro:content';
 export const blogSchema = {
     // Type-check frontmatter using a schema
     schema: z.object({

@@ -6,7 +6,7 @@ import { config } from "@/theme-simple/config";
 
 import BlogSingle from "@/theme-simple/_blocks/BlogSingle.astro";
 
-import { CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection } from 'astro:content';
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
 	return posts.map((post) => ({
