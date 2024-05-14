@@ -32,10 +32,25 @@ export interface Opt {
     curFullYear: string
 }
 
+export interface pagination {
+    current: number
+    total: number
+    tpl: string
+    prev: {
+        num: number
+        link: string
+    }
+    next: {
+        num: number
+        link: string
+    }
+
+}
+
 export interface Func {
     paresTags: (config: Config) => void
     sortPosts: (a: CollectionEntry<blog>, b: CollectionEntry<blog>) => number
-    getPagination: (count: number, size: number, current?: number, tpl?: string) => any
+    getPagination: (count: number, size: number, current?: number, tpl?: string) => pagination
 }
 
 export interface RequiredConfig {

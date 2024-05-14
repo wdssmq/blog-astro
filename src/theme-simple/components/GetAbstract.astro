@@ -7,6 +7,7 @@ import { marked } from "marked";
 const { content } = Astro.props;
 
 // 合并多个两个空行为一个空行
+/* eslint-disable no-useless-escape */
 const raw_content = content.trim().replace(/\n\s*[\n\s]+/g, "\n\n");
 // const html_content = marked(raw_content);
 
