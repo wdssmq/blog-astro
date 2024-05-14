@@ -1,5 +1,6 @@
 @import "_core/colors";
 @import "_core/base";
+@import "_core/mixins";
 @import "_core/a11y-dark";
 
 body {
@@ -83,9 +84,13 @@ a {
 }
 
 .content-container {
-    max-width: 1064px;
     margin: 0 auto;
     padding: 48px 32px;
+
+    .fullhd({
+        max-width: @widescreen-breakpoint;
+        // max-width: @fullhd-breakpoint;
+    });
 }
 
 .post-item {
@@ -181,7 +186,6 @@ a {
 }
 
 .post-detail {
-    max-width: 720px;
     margin: 0 auto;
 
     .feature-container {
