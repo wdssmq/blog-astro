@@ -5,7 +5,7 @@ import { config } from "@/theme-simple/config";
 import { marked } from "marked";
 import sanitizeHtml from 'sanitize-html';
 
-export async function get(context) {
+export async function GET(context) {
     const posts = (await getCollection("blog")).sort(config.func.sortPosts).slice(0, config.opt.rssSize);
     return rss({
         title: config.site.title,
