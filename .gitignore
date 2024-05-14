@@ -24,4 +24,5 @@ pnpm-debug.log*
 # other
 .history
 *-note/
-_*
+_blog/
+__unconfig_astro.config.mjs
