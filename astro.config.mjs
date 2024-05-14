@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
-import mdx from '@astrojs/mdx';
 
+import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
@@ -9,5 +9,5 @@ export default defineConfig({
     redirects: {
         '/page/1': '/'
     },
-	integrations: [mdx(), sitemap()],
+    integrations: [mdx(), sitemap()],
 });
