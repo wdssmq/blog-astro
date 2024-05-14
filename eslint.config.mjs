@@ -17,6 +17,10 @@ export default [
     ...eslintPluginAstro.configs.recommended,
     {
         'rules': {
+            /* 当前项目的规则 */
+
+            "@typescript-eslint/triple-slash-reference": "off",
+
             /* 相对通用的规则 */
 
             // 缩进
