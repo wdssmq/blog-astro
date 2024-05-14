@@ -11,13 +11,21 @@ import GetAbstract from "@/theme-simple/components/GetAbstract.astro";
 import { getCollection } from "astro:content";
 const allPost = (await getCollection("blog")).sort(config.func.sortPosts);
 const posts = allPost.slice(0, config.opt.postsSize);
-const pagination = config.func.getPagination(allPost.length, config.opt.postsSize);
+const pagination = config.func.getPagination(
+    allPost.length,
+    config.opt.postsSize,
+);
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
-        <BaseHead title={config.site.title} subtitle={config.site.description} description={config.site.description} image={config.site.image}/>
+        <BaseHead
+            title={config.site.title}
+            subtitle={config.site.description}
+            description={config.site.description}
+            image={config.site.image}
+        />
     </head>
     <body>
         <div id="app" class="main">
@@ -29,11 +37,14 @@ const pagination = config.func.getPagination(allPost.length, config.opt.postsSiz
             <div class="main-container">
                 <div class="content-container" data-aos="fade-up">
                     {
-                    // 文章列表>>
+                        // 文章列表>>
                         posts.map((post) => (
                             <article class="post-item">
                                 <div class="left">
-                                    <a href={`/blog/${post.slug}/`} title={post.data.title}>
+                                    <a
+                                        href={`/blog/${post.slug}/`}
+                                        title={post.data.title}
+                                    >
                                         <h2 class="post-title">
                                             {post.data.title}
                                         </h2>
@@ -44,13 +55,15 @@ const pagination = config.func.getPagination(allPost.length, config.opt.postsSiz
                                         />
                                     </div>
                                     <div class="post-abstract">
-                                        <GetAbstract
-                                            content={post.body}
-                                        />
+                                        <GetAbstract content={post.body} />
                                     </div>
                                 </div>
                                 {post.data.heroImage && (
-                                    <a class="right" href={`/blog/${post.slug}/`} title={post.data.title}>
+                                    <a
+                                        class="right"
+                                        href={`/blog/${post.slug}/`}
+                                        title={post.data.title}
+                                    >
                                         <div
                                             class="feature-container"
                                             style={`background-image: url('${post.data.heroImage}');`}
@@ -59,11 +72,12 @@ const pagination = config.func.getPagination(allPost.length, config.opt.postsSiz
                                 )}
                             </article>
                         ))
-                    // <<文章列表
+                        // <<文章列表
                     }
                     {
-                        config.opt.postsSize < allPost.length &&
-                        <PageBar {...pagination} isBar={true} />
+                        config.opt.postsSize < allPost.length && (
+                            <PageBar {...pagination} isBar={true} />
+                        )
                     }
                 </div>
             </div>
