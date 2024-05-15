@@ -13,12 +13,7 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const {
-    title,
-    subtitle,
-    description,
-    image,
-} = Astro.props;
+const { title, subtitle, description, image } = Astro.props;
 
 const titleText = subtitle ? `${title} - ${subtitle}` : title;
 

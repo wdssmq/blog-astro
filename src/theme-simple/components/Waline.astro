@@ -7,7 +7,7 @@ const configWaline = config.waline;
 <div id="waline"></div>
 
 <script is:inline type="module" define:vars={{ configWaline }}>
-    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+    import { init } from "https://unpkg.com/@waline/client@v3/dist/waline.js";
     document.addEventListener("DOMContentLoaded", (event) => {
         init({
             el: "#waline",

@@ -21,7 +21,7 @@ import { config } from "@/theme-simple/config";
             <div
                 class="feature-container"
                 style={`background-image: url('${heroImage}');`}
-            ></div>
+            />
         )
     }
     <div class="post-content">
@@ -30,11 +30,11 @@ import { config } from "@/theme-simple/config";
     <div class="tag-container">
         {
             tags.map((tag) => (
-                <a href={`/tags/${tag}`} class="tag" title={tag}>{tag}</a>
+                <a href={`/tags/${tag}`} class="tag" title={tag}>
+                    {tag}
+                </a>
             ))
         }
     </div>
 </div>
-{
-    config.waline.enable && <Waline />
-}
+{config.waline.enable && <Waline />}
