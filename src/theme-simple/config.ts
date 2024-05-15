@@ -30,6 +30,10 @@ const defConfig: RequiredConfig = {
         title: "Search",
         description: "Search description",
     },
+    waline: {
+        enable: false,
+        serverURL: "https:///your-domain.vercel.app",
+    },
     opt: {
         postsSize: 13,
         rssSize: 37,

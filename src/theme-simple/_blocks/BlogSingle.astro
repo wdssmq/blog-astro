@@ -6,6 +6,9 @@ type Props = CollectionEntry<"blog">["data"];
 const { title, pubDate, heroImage, tags } = Astro.props;
 
 import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
+import Waline from "@/theme-simple/components/Waline.astro";
+
+import { config } from "@/theme-simple/config";
 ---
 
 <div class="post-detail">
@@ -32,3 +35,6 @@ import FormattedDate from "@/theme-simple/components/FormattedDate.astro";
         }
     </div>
 </div>
+{
+    config.waline.enable && <Waline />
+}

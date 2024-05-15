@@ -1,0 +1,18 @@
+---
+import { config } from "@/theme-simple/config";
+const configWaline = config.waline;
+// import "@waline/client/style";
+---
+
+<div id="waline"></div>
+
+<script is:inline type="module" define:vars={{ configWaline }}>
+    import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
+    document.addEventListener("DOMContentLoaded", (event) => {
+        init({
+            el: "#waline",
+            serverURL: configWaline.serverURL,
+        });
+    });
+</script>
+

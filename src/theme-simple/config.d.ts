@@ -31,6 +31,11 @@ export interface Search {
     description: string
 }
 
+export interface Wailne {
+    enable: boolean
+    serverURL: string
+}
+
 export interface Opt {
     postsSize: number
     rssSize: number
@@ -64,6 +69,7 @@ export interface RequiredConfig {
     menus: MenuItem[];
     archive: Archive;
     search: Search;
+    waline: Wailne;
     opt: Opt;
     func: Func;
 }
@@ -74,6 +80,7 @@ export interface UserConfig {
     menus?: MenuItem[];
     archive?: Partial<Archive>;
     search?: Partial<Search>;
+    waline?: Partial<Wailne>;
     opt?: Partial<Opt>;
     func?: Partial<Func>;
 }
