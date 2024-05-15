@@ -3,7 +3,7 @@ import { usrConfig } from "@/consts";
 
 const defConfig: RequiredConfig = {
     site: {
-        url: "/",
+        url: "/", // http://localhost:4321/ ← tailing slash is required.
         title: "My website.",
         description: "Welcome to my website!",
         favicon: "/favicon.svg",
