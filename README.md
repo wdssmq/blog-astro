@@ -31,6 +31,19 @@ npm run build
 4. 内置了一个「关于」页面，路径 `src/content/pages/about.md`，**应该是不能删除，其他文件名也并不会被解析为新页面**；
 5. 「文章」存放于 `src/content/blog` 路径内，可自行清空后新建；
 
+5、评论设置：
+
+1. 参考文档部署 Waline 评论系统: [https://waline.js.org/](https://waline.js.org/ "Waline | Waline")；
+2. 在 `src/consts.ts` 中配置 `waline` 字段：
+
+```js
+    waline: {
+        enable: true, // 启用评论
+        serverURL: "https://your-domain.vercel.app", // 修改为你的评论服务器地址
+    },
+
+```
+
 5、更新：
 
 1. 克隆或下载 [wdssmq/blog-astro](https://github.com/wdssmq/blog-astro "wdssmq/blog-astro: 一个基于 Astro 的静态博客；") 仓库；
