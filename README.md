@@ -27,10 +27,9 @@ npm run build
 
 1. 这东西虽然可以当博客，但并没有一般博客意义上的「主题」规范，姑且仍然尝试将文件放到了 `src/theme-simple` 目录下，`src/pages` 则因为 Astro 的限制，只能放外边；
 2. `src/theme-simple/config.ts` 用于预置和合并配置，自定义则在 `src/consts.ts` 中；
-3. `astro.config.mjs` 有个 `site` 字段用于设置域名；「好像和 `config.site.url` 也是重复的」
-4. 文章内容路径为 `src/content`，可以符号链接或快捷方式到其他地方方便管理；
-5. 内置了一个「关于」页面，路径 `src/content/pages/about.md`，**应该是不能删除，其他文件名也并不会被解析为新页面**；
-6. 「文章」存放于`src/content/blog`路径内，可自行清空后新建；
+3. 文章内容路径为 `src/content`，可以符号链接或快捷方式到其他地方方便管理；
+4. 内置了一个「关于」页面，路径 `src/content/pages/about.md`，**应该是不能删除，其他文件名也并不会被解析为新页面**；
+5. 「文章」存放于 `src/content/blog` 路径内，可自行清空后新建；
 
 5、更新：
 
